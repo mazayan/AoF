@@ -1,0 +1,8 @@
+#!/usr/bin/env python
+
+scipy
+sklearn
+tensorflow
+pandas
+matplotlib
+numpy
