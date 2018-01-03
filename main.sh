@@ -10,7 +10,7 @@ set -e
 
 readonly DATASET1_PATH="env/data/"
 readonly DATASET2_PATH="env/data/County_Dataset.csv"
-readonly VENV_PATH="env/bin"
+readonly VENV_PATH="env"
 #END CONFIG
 
 
@@ -29,7 +29,7 @@ main() {
     fi
 
     #activate venv
-    source $VENV_PATH/activate
+    source $VENV_PATH/bin/activate
     echo "In venv"
 
     if [ -f $DATASET1_PATH ]; then
@@ -43,7 +43,7 @@ main() {
     python Main.py
 
     #deactivate venv
-    source $VENV_PATH/deactivate
+    source $VENV_PATH/bin/deactivate
     echo "Leaving venv..."
 
 }
