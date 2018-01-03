@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import classification_report, confusion_matrix
 from pylab import *
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
 
 def get_x_features(dataset):
@@ -87,12 +87,12 @@ def knn(reader_opioid_dataset, x_features):
         pred_i = knn.predict(X_test)
         error_rate.append(np.mean(pred_i != y_test))
 
-    plt.figure(figsize=(10,6))
-    plt.plot(range(1,40), error_rate, color='blue', linestyle='dashed', marker='o', markerfacecolor='red', markersize=10)
-    plt.title('Error Rate vs. K Value')
-    plt.xlabel('K')
-    plt.ylabel('Error Rate')
-    plt.show()
+    #plt.figure(figsize=(10,6))
+    #plt.plot(range(1,40), error_rate, color='blue', linestyle='dashed', marker='o', markerfacecolor='red', markersize=10)
+    #plt.title('Error Rate vs. K Value')
+    #plt.xlabel('K')
+    #plt.ylabel('Error Rate')
+    #plt.show()
 
 
 

@@ -4,5 +4,4 @@ scipy
 sklearn
 tensorflow
 pandas
-matplotlib
 numpy
