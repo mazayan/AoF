@@ -8,9 +8,9 @@ set -e
 #readonly DATASET2_PATH="/usr/bin/env/AoF_Project/data/County_Dataset.csv"
 #readonly VENV_PATH="/usr/bin/env"
 
-readonly DATASET1_PATH="~/env/data/"
-readonly DATASET2_PATH="~/env/data/County_Dataset.csv"
-readonly VENV_PATH="~/env"
+readonly DATASET1_PATH="env/data/"
+readonly DATASET2_PATH="env/data/County_Dataset.csv"
+readonly VENV_PATH="env"
 #END CONFIG
 
 
