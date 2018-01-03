@@ -11,14 +11,10 @@ set -e
 readonly DATASET1_PATH="~/env/data/"
 readonly DATASET2_PATH="~/env/data/County_Dataset.csv"
 readonly VENV_PATH="~/env"
-
-python3 -m venv /Users/Mazayan/Desktop
 #END CONFIG
 
 
 main() {
-
-    git clone....
 
     if [ -d $VENV_PATH ]; then
         echo "Skipping venv creation as it already exists."
