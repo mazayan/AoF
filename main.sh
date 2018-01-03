@@ -10,7 +10,7 @@ set -e
 
 readonly DATASET1_PATH="env/data/"
 readonly DATASET2_PATH="env/data/County_Dataset.csv"
-readonly VENV_PATH="env"
+readonly VENV_PATH="env/bin"
 #END CONFIG
 
 
