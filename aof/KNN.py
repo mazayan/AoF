@@ -7,7 +7,7 @@ import tensorflow as tf
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import classification_report, confusion_matrix
-from pylab import *
+#from pylab import *
 #import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
 
