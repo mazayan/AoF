@@ -32,13 +32,13 @@ main() {
     pip3 install -r requirements.txt #put this in an if block
     echo "In venv"
 
-    if [ -f $DATASET1_PATH ]; then
-        echo "Skipping download since opioid dataset exists"
-    else
-        echo "Downloading opioid dataset..."
-        curl -o $DATASET1_PATH https://data.ct.gov/api/views/rybz-nyjw/rows.csv?accessType=DOWNLOAD
-        echo "Done downloading opioid dataset"
-    fi
+    #if [ -f $DATASET1_PATH ]; then
+    #    echo "Skipping download since opioid dataset exists"
+    #else
+    echo "Downloading opioid dataset..."
+    curl -o $DATASET1_PATH https://data.ct.gov/api/views/rybz-nyjw/rows.csv?accessType=DOWNLOAD
+    echo "Done downloading opioid dataset"
+    #fi
 
     python Main.py
 
