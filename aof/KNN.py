@@ -13,8 +13,8 @@ from sklearn.preprocessing import StandardScaler
 
 def get_x_features(dataset):
     scaler = StandardScaler()
-    scaler.fit(dataset.iloc[:,1:3])
-    scaled_features = scaler.transform(dataset.iloc[:,1:3])
+    scaler.fit(dataset.iloc[:,1:4])
+    scaled_features = scaler.transform(dataset.iloc[:,1:4])
     return scaled_features
 
 #code referenced from http://marubon-ds.blogspot.com/2017/09/knn-k-nearest-neighbors-by-tensorflow.html
@@ -40,7 +40,7 @@ def k_nearest_neighbors(reader_opioid_dataset, x_features):
 
     feature_number = len(x_vals_train[0])
 
-    k = 5
+    k = 10
 
     x_data_train = tf.placeholder(shape=[None, feature_number], dtype=tf.float32)
     y_data_train = tf.placeholder(shape=[None, len(y_vals[0])], dtype=tf.float32)

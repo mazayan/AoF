@@ -11,8 +11,8 @@ opioid_overdose_dataset_path = '/Users/Mazayan/IdeaProjects/AoF/data/Accidental_
 def clean_data(opioid_dataset, county_dataset):
     #columns to delete
     remove_cols_opioid = ['CaseNumber', 'Date', 'Race', 'Location', 'DescriptionofInjury', 'InjuryPlace',
-                          'ImmediateCauseA', 'Fentanyl', 'Oxycodone', 'Oxymorphone', 'EtOH', 'Hydrocodone',
-                          'Benzodiazepine', 'Methadone', 'Amphet', 'Tramad', 'Morphine (not heroin)', 'Other',
+                          'ImmediateCauseA', 'Fentanyl', 'Cocaine', 'Oxymorphone', 'EtOH', 'Hydrocodone',
+                          'Benzodiazepine', 'Heroin', 'Amphet', 'Tramad', 'Morphine (not heroin)', 'Other',
                           'Any Opioid', 'MannerofDeath', 'AmendedMannerofDeath', 'DeathLoc', 'Death State',
                           'Death County', 'Death City', 'Residence State']
 
@@ -55,20 +55,20 @@ def convert_values(opioid_dataset):
     opioid_dataset = Clean_Data.encode_new_columns(opioid_dataset, 'Residence County', 'Residence County Encode')
 
     #convert strings to binary for the below columns
-    opioid_dataset['Heroin'] = opioid_dataset['Heroin'].replace("None", 0)
-    opioid_dataset['Heroin'] = opioid_dataset['Heroin'].replace("Y", 1)
-    opioid_dataset['Cocaine'] = opioid_dataset['Cocaine'].replace("None", 0)
-    opioid_dataset['Cocaine'] = opioid_dataset['Cocaine'].replace("Y", 1)
+    opioid_dataset['Methadone'] = opioid_dataset['Methadone'].replace("None", 0)
+    opioid_dataset['Methadone'] = opioid_dataset['Methadone'].replace("Y", 1)
+    opioid_dataset['Oxycodone'] = opioid_dataset['Oxycodone'].replace("None", 0)
+    opioid_dataset['Oxycodone'] = opioid_dataset['Oxycodone'].replace("Y", 1)
     opioid_dataset['Sex'] = opioid_dataset['Sex'].replace("Female", 0)
     opioid_dataset['Sex'] = opioid_dataset['Sex'].replace("Male", 1)
 
     #create new column that analyzes type of opioid overdose
     def label_opioid(row):
-        if row['Heroin'] == 0 and row['Cocaine'] == 1:
+        if row['Methadone'] == 0 and row['Oxycodone'] == 1:
             return 1
-        if row['Heroin'] == 1 and row['Cocaine'] == 1:
+        if row['Methadone'] == 1 and row['Oxycodone'] == 1:
             return 2
-        if row['Heroin'] == 1 and row['Cocaine'] == 0:
+        if row['Methadone'] == 1 and row['Oxycodone'] == 0:
             return 3
         else:
             return 0
@@ -97,8 +97,8 @@ def main():
 
     x_features = KNN.get_x_features(opioid_overdose_data)
 
-    KNN.knn(opioid_overdose_data, x_features)
-    #KNN.k_nearest_neighbors(opioid_overdose_data, x_features)
+    #KNN.knn(opioid_overdose_data, x_features)
+    KNN.k_nearest_neighbors(opioid_overdose_data, x_features)
 
 
 main()
