@@ -19,7 +19,7 @@ main() {
     else
         echo "Creating venv..."
         #virtualenv create -r requirements.txt $VENV_PATH
-        python -m virtualenv $VENV_PATH
+        python3 -m virtualenv $VENV_PATH
         echo "Done Creating venv"
     fi
 
