@@ -4,10 +4,6 @@
 set -e
 
 #CONFIG
-#readonly DATASET1_PATH="/usr/bin/env/AoF_Project/data/"
-#readonly DATASET2_PATH="/usr/bin/env/AoF_Project/data/County_Dataset.csv"
-#readonly VENV_PATH="/usr/bin/env"
-
 readonly DATASET1_PATH="data/Accidental_Drug_Related_Deaths__2012-June_2017.csv"
 readonly DATASET2_PATH="data/County_Dataset.csv"
 readonly VENV_PATH="env"
@@ -43,7 +39,8 @@ main() {
     python Main.py
 
     #deactivate venv
-    source $VENV_PATH/bin/deactivate
+    #source $VENV_PATH/bin/deactivate
+    deactivate
     echo "Leaving venv..."
 
 }
