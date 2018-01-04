@@ -16,7 +16,7 @@ def clean_data(opioid_dataset, county_dataset):
                           'Any Opioid', 'MannerofDeath', 'AmendedMannerofDeath', 'DeathLoc', 'Death State',
                           'Death County', 'Death City', 'Residence State']
 
-    remove_cols_county = ['History of incorporation', 'Year Established', 'Parent Town']
+    remove_cols_county = ['Year Established']
 
     opioid_dataset = Clean_Data.delete_columns(opioid_dataset, remove_cols_opioid)
     county_dataset = Clean_Data.delete_columns(county_dataset, remove_cols_county)
