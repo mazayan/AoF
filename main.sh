@@ -19,13 +19,13 @@ main() {
     else
         echo "Creating venv..."
         #virtualenv create -r requirements.txt $VENV_PATH
-        python3 -m virtualenv $VENV_PATH
+        python -m virtualenv $VENV_PATH
         echo "Done Creating venv"
     fi
 
     #activate venv
     source $VENV_PATH/bin/activate
-    pip3 install -r requirements.txt #put this in an if block
+    pip install -r requirements.txt #put this in an if block
     echo "In venv"
 
     #if [ -f $DATASET1_PATH ]; then
