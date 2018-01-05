@@ -26,8 +26,12 @@ main() {
 
     #activate venv
     source $VENV_PATH/bin/activate
-    python3 -m pip install -r requirements.txt
+
     echo "In venv"
+
+    echo "Installing requirements"
+    python3 -m pip install -r requirements.txt
+    echo "Done installing requirements"
 
     if [ -s $DATASET1_PATH ]; then
         echo "Skipping download since opioid dataset exists"
