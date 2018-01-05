@@ -26,7 +26,7 @@ main() {
 
     #activate venv
     source $VENV_PATH/bin/activate
-    python3 -m pip install -r requirements.txt
+    pip install -r requirements.txt
     echo "In venv"
 
     if [ -s $DATASET1_PATH ]; then
