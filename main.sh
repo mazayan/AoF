@@ -33,13 +33,13 @@ main() {
     pip install -r requirements.txt
     echo "Done installing requirements"
 
-    if [ -s $DATASET1_PATH ]; then
-        echo "Skipping download since opioid dataset exists"
-    else
-        echo "Downloading opioid dataset..."
-        curl -o $DATASET1_PATH https://data.ct.gov/api/views/rybz-nyjw/rows.csv?accessType=DOWNLOAD
-        echo "Done downloading opioid dataset"
-    fi
+    #if [ -s $DATASET1_PATH ]; then
+    #    echo "Skipping download since opioid dataset exists"
+    #else
+    #    echo "Downloading opioid dataset..."
+    curl -o $DATASET1_PATH https://data.ct.gov/api/views/rybz-nyjw/rows.csv?accessType=DOWNLOAD
+    #    echo "Done downloading opioid dataset"
+    #fi
 
     python Main.py
 
