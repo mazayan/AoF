@@ -20,7 +20,7 @@ main() {
         echo "Skipping venv creation as it already exists."
     else
         echo "Creating virtualenv..."
-    virtualenv --python=/usr/bin/python3.6 $VENV_PATH
+        virtualenv --python=/usr/bin/python3.6 $VENV_PATH
         echo "Done Creating virtualenv"
     fi
 
