@@ -31,7 +31,7 @@ main() {
     echo "In venv"
 
     echo "Installing requirements"
-    python3 -m pip install -r requirements.txt
+    pip install -r requirements.txt
     echo "Done installing requirements"
 
     if [ -s $DATASET1_PATH ]; then
