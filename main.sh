@@ -41,7 +41,7 @@ main() {
         echo "Done downloading opioid dataset"
     fi
 
-    python3 Main.py
+    --python=/usr/bin/python3.6 Main.py
 
     deactivate
     echo "Leaving venv..."
