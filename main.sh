@@ -16,14 +16,13 @@ main() {
     python3 -m pip install virtualenv
     echo "Done installing virtualenv"
 
-    #if [ -d $VENV_PATH ]; then
-    #    echo "Skipping venv creation as it already exists."
-    #else
-    #    echo "Creating virtualenv..."
-    #python3 -m virtualenv $VENV_PATH
+    if [ -d $VENV_PATH ]; then
+        echo "Skipping venv creation as it already exists."
+    else
+        echo "Creating virtualenv..."
     virtualenv --python=/usr/bin/python3.6 $VENV_PATH
-        #echo "Done Creating virtualenv"
-    #fi
+        echo "Done Creating virtualenv"
+    fi
 
     #activate venv
     source $VENV_PATH/bin/activate
