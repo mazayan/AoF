@@ -13,20 +13,20 @@ readonly VENV_PATH="env"
 main() {
 
     echo "Installing virtualenv"
-    pip install virtualenv
+    python3 -m pip install virtualenv
     echo "Done installing virtualenv"
 
     if [ -d $VENV_PATH ]; then
         echo "Skipping venv creation as it already exists."
     else
         echo "Creating virtualenv..."
-        python -m virtualenv $VENV_PATH
+        python3 -m virtualenv $VENV_PATH
         echo "Done Creating virtualenv"
     fi
 
     #activate venv
     source $VENV_PATH/bin/activate
-    pip install -r requirements.txt
+    python3 -m pip install -r requirements.txt
     echo "In venv"
 
     if [ -s $DATASET1_PATH ]; then
@@ -37,7 +37,7 @@ main() {
         echo "Done downloading opioid dataset"
     fi
 
-    python Main.py
+    python3 Main.py
 
     deactivate
     echo "Leaving venv..."
