@@ -13,14 +13,14 @@ readonly VENV_PATH="env"
 main() {
 
     echo "Installing virtualenv"
-    pip install virtualenv
+    pip3 install virtualenv
     echo "Done installing virtualenv"
 
     if [ -d $VENV_PATH ]; then
         echo "Skipping venv creation as it already exists."
     else
         echo "Creating virtualenv..."
-        python -m virtualenv $VENV_PATH
+        python3 -m virtualenv $VENV_PATH
         echo "Done Creating virtualenv"
     fi
 
