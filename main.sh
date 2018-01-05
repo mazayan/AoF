@@ -12,13 +12,29 @@ readonly VENV_PATH="env"
 
 main() {
 
-    pip install virtualenv
+    if pip --version >/dev/null 2>&1; then
+        echo "pip already installed"
+    else
+        echo "installing pip..."
+        #python -m pip install
+        #sudo easy_install pip
+        curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+        python get-pip.py
+        echo "pip installed"
+    fi
+
+    if virtualenv --version >/dev/null 2>&1; then
+        echo "virtualenv already installed"
+    else
+        echo "Installing virtuaalenv"
+        pip install virtualenv
+        echo "virtualenv installed"
+    fi
 
     if [ -d $VENV_PATH ]; then
         echo "Skipping venv creation as it already exists."
     else
         echo "Creating venv..."
-        #virtualenv create -r requirements.txt $VENV_PATH
         python -m virtualenv $VENV_PATH
         echo "Done Creating venv"
     fi
@@ -38,8 +54,6 @@ main() {
 
     python Main.py
 
-    #deactivate venv
-    #source $VENV_PATH/bin/deactivate
     deactivate
     echo "Leaving venv..."
 
