@@ -21,7 +21,7 @@ main() {
     #else
     #    echo "Creating virtualenv..."
     #python3 -m virtualenv $VENV_PATH
-    virtualenv --python=/usr/local/bin/python3.6 $VENV_PATH
+    virtualenv --python=/usr/bin/python3.6 $VENV_PATH
         #echo "Done Creating virtualenv"
     #fi
 
