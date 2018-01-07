@@ -25,7 +25,7 @@ main() {
     fi
 
     #activate venv
-    b
+    source $VENV_PATH/bin/activate
 
     echo "In venv"
 
