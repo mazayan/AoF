@@ -32,7 +32,7 @@ main() {
     pip install -U pip setuptools
 
     echo "Installing requirements"
-    $VENV_PATH/bin/pip install -r requirements.txt
+    $VENV_PATH/bin/pip install -r stable-req.txt
     echo "Done installing requirements"
 
     if [ -s $DATASET1_PATH ]; then
