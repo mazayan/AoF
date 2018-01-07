@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
-import aof.Clean_Data as Clean_Data
 import numpy as np
+import aof.Clean_Data as Clean_Data
 import aof.KNN as KNN
 
 #Local paths to datasets
@@ -50,25 +50,25 @@ def clean_data(opioid_dataset, county_dataset):
     return opioid_dataset
 
 
-def convert_values(opioid_dataset):
+def convert_values(opioid_dataset, drug1, drug2):
     #encode Residence County column to int type
     opioid_dataset = Clean_Data.encode_new_columns(opioid_dataset, 'Residence County', 'Residence County Encode')
 
     #convert strings to binary for the below columns
-    opioid_dataset['Methadone'] = opioid_dataset['Methadone'].replace("None", 0)
-    opioid_dataset['Methadone'] = opioid_dataset['Methadone'].replace("Y", 1)
-    opioid_dataset['Oxycodone'] = opioid_dataset['Oxycodone'].replace("None", 0)
-    opioid_dataset['Oxycodone'] = opioid_dataset['Oxycodone'].replace("Y", 1)
+    opioid_dataset[drug1] = opioid_dataset[drug1].replace("None", 0)
+    opioid_dataset[drug1] = opioid_dataset[drug1].replace("Y", 1)
+    opioid_dataset[drug2] = opioid_dataset[drug2].replace("None", 0)
+    opioid_dataset[drug2] = opioid_dataset[drug2].replace("Y", 1)
     opioid_dataset['Sex'] = opioid_dataset['Sex'].replace("Female", 0)
     opioid_dataset['Sex'] = opioid_dataset['Sex'].replace("Male", 1)
 
     #create new column that analyzes type of opioid overdose
     def label_opioid(row):
-        if row['Methadone'] == 0 and row['Oxycodone'] == 1:
+        if row[drug1] == 0 and row[drug2] == 1:
             return 1
-        if row['Methadone'] == 1 and row['Oxycodone'] == 1:
+        if row[drug1] == 1 and row[drug2] == 1:
             return 2
-        if row['Methadone'] == 1 and row['Oxycodone'] == 0:
+        if row[drug1] == 1 and row[drug2] == 0:
             return 3
         else:
             return 0
@@ -88,7 +88,7 @@ def main():
     opioid_overdose_data = clean_data(opioid_overdose_data, county_data)
 
     #convert Values
-    opioid_overdose_data = convert_values(opioid_overdose_data)
+    opioid_overdose_data = convert_values(opioid_overdose_data, 'Oxycodone', 'Methadone')
 
     #reorder columns
     opioid_overdose_data = Clean_Data.reorder_columns(-2, 1, 4, opioid_overdose_data)
