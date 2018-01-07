@@ -30,7 +30,7 @@ main() {
     echo "In venv"
 
     echo "Installing requirements"
-    pip install -r requirements.txt
+    $VENV_PATH/bin/pip install -r requirements.txt
     echo "Done installing requirements"
 
     if [ -s $DATASET1_PATH ]; then
