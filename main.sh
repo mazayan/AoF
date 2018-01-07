@@ -29,10 +29,10 @@ main() {
 
     echo "In venv"
 
-    python3 -m pip install -U pip setuptools
+    pip3 install -U pip setuptools
 
     echo "Installing requirements"
-    python3 -m pip install -r requirements.txt
+    pip3 install -r requirements.txt
     echo "Done installing requirements"
 
     if [ -s $DATASET1_PATH ]; then
