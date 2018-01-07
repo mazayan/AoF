@@ -14,25 +14,25 @@ main() {
 
     echo "Installing virtualenv"
     python3 -m pip install virtualenv
-    echo "Done installing virtualenv"
 
     if [ -d $VENV_PATH ]; then
         echo "Skipping venv creation as it already exists."
     else
         echo "Creating virtualenv..."
-        virtualenv --python=/usr/bin/python3.6 $VENV_PATH
+        #virtualenv --python=/usr/bin/python3.6 $VENV_PATH
+        python3 virtualenv $VENV_PATH
         echo "Done Creating virtualenv"
     fi
 
     #activate venv
-    source $VENV_PATH/bin/activate
+    b
 
     echo "In venv"
 
     python3 -m pip install -U pip setuptools
 
     echo "Installing requirements"
-    python3 -m pip install -r stable-req.txt
+    python3 -m pip install -r requirements.txt
     echo "Done installing requirements"
 
     if [ -s $DATASET1_PATH ]; then
