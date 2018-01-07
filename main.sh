@@ -29,10 +29,10 @@ main() {
 
     echo "In venv"
 
-    pip install -U pip setuptools
+    python3 -m pip install -U pip setuptools
 
     echo "Installing requirements"
-    $VENV_PATH/bin/pip install -r stable-req.txt
+    python3 -m pip install -r stable-req.txt
     echo "Done installing requirements"
 
     if [ -s $DATASET1_PATH ]; then
