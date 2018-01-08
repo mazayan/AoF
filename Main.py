@@ -5,14 +5,14 @@ import aof.Clean_Data as Clean_Data
 import aof.KNN as KNN
 
 #Local paths to datasets
-county_dataset_path = '/Users/Mazayan/IdeaProjects/AoF/data/County_Dataset.csv'
-opioid_overdose_dataset_path = '/Users/Mazayan/IdeaProjects/AoF/data/Accidental_Drug_Related_Deaths__2012-June_2017.csv'
+county_dataset_path = './data/County_Dataset.csv'
+opioid_overdose_dataset_path = './data/Accidental_Drug_Related_Deaths__2012-June_2017.csv'
 
 def clean_data(opioid_dataset, county_dataset):
     #columns to delete
     remove_cols_opioid = ['CaseNumber', 'Date', 'Race', 'Location', 'DescriptionofInjury', 'InjuryPlace',
-                          'ImmediateCauseA', 'Fentanyl', 'Cocaine', 'Oxymorphone', 'EtOH', 'Hydrocodone',
-                          'Benzodiazepine', 'Heroin', 'Amphet', 'Tramad', 'Morphine (not heroin)', 'Other',
+                          'ImmediateCauseA', 'Cocaine', 'Benzodiazepine', 'Oxymorphone', 'Fentanyl', 'Hydrocodone',
+                          'Heroin', 'EtOH', 'Amphet', 'Tramad', 'Morphine (not heroin)', 'Other',
                           'Any Opioid', 'MannerofDeath', 'AmendedMannerofDeath', 'DeathLoc', 'Death State',
                           'Death County', 'Death City', 'Residence State']
 
@@ -73,12 +73,14 @@ def convert_values(opioid_dataset, drug1, drug2):
         else:
             return 0
 
+    target_classifiers = [drug2, drug1+'&'+drug2, drug1, 'Neither']
+
     opioid_dataset['Opioid Type'] = opioid_dataset.apply(label_opioid, axis=1)
 
     #cast age column to int
     opioid_dataset['Age'] = opioid_dataset['Age'].astype('int64')
 
-    return opioid_dataset
+    return opioid_dataset, target_classifiers
 
 def main():
     #load data
@@ -88,7 +90,9 @@ def main():
     opioid_overdose_data = clean_data(opioid_overdose_data, county_data)
 
     #convert Values
-    opioid_overdose_data = convert_values(opioid_overdose_data, 'Oxycodone', 'Methadone')
+    opioid_overdose_data, target_classifiers = convert_values(opioid_overdose_data, 'Oxycodone', 'Methadone')
+    #'Heroin'(1933), 'Methadone' (336), 'EtOH' (772), 'Oxymorphone' (95), 'Hydrocodone' (92), 'Cocaine' (998)
+    #'Benzodiazepine' (884), 'Oxycodone' (491), 'Amphet' (81), 'Tramad' (79)
 
     #reorder columns
     opioid_overdose_data = Clean_Data.reorder_columns(-2, 1, 4, opioid_overdose_data)
@@ -98,7 +102,7 @@ def main():
     x_features = KNN.get_x_features(opioid_overdose_data)
 
     #KNN.knn(opioid_overdose_data, x_features)
-    KNN.k_nearest_neighbors(opioid_overdose_data, x_features)
+    KNN.k_nearest_neighbors(opioid_overdose_data, x_features, target_classifiers)
 
 
 main()
