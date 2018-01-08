@@ -14,7 +14,7 @@ main() {
 
 
     echo "Installing requirements"
-    /usr/local/bin/pip3 install -r requirements.txt
+    sudo /usr/local/bin/pip3 install -r requirements.txt
     echo "Done installing requirements"
 
     if [ -s $DATASET1_PATH ]; then
