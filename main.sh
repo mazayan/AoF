@@ -12,10 +12,10 @@ readonly VENV_PATH="./env"
 
 main() {
 
-    if [ -d $VENV_PATH ]; then
-        echo "Skipping venv creation as it already exists."
+    """if [ -d $VENV_PATH ]; then
+        echo Skipping venv creation as it already exists.
     else
-        echo "Creating virtualenv..."
+        echo Creating virtualenv...
         virtualenv --python=/usr/bin/python3.6 $VENV_PATH
         echo "Done Creating virtualenv"
     fi
@@ -23,10 +23,10 @@ main() {
     #activate venv
     source $VENV_PATH/bin/activate
 
-    echo "In venv"
+    echo In venv
 
     #pip3 install -U pip3 setuptools
-
+"""
     echo "Installing requirements"
     pip3 install -r requirements.txt
     echo "Done installing requirements"
@@ -41,8 +41,8 @@ main() {
 
     python3 Main.py
 
-    deactivate
-    echo "Leaving venv..."
+    #deactivate
+    #echo "Leaving venv..."
 
 }
 
