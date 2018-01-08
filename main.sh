@@ -12,9 +12,6 @@ readonly VENV_PATH="./env"
 
 main() {
 
-    echo "Installing virtualenv"
-    pip3 install virtualenv
-
     if [ -d $VENV_PATH ]; then
         echo "Skipping venv creation as it already exists."
     else
