@@ -2,12 +2,14 @@
 
 import unittest
 import aof.Clean_Data as Clean_Data
-import Main
 
 class TestCleanData(unittest.TestCase):
 
     def setUp(self):
-        self.opioid_data, self.county_data = Clean_Data.load_data(Main.county_dataset, Main.opioid_overdose_dataset)
+        #Local paths to datasets
+        county_dataset_path = '../data/County_Dataset.csv'
+        opioid_overdose_dataset_path = '../data/Accidental_Drug_Related_Deaths__2012-June_2017.csv'
+        self.opioid_data, self.county_data = Clean_Data.load_data(county_dataset_path, opioid_overdose_dataset_path)
         print("Setup")
 
     def tearDown(self):
@@ -17,7 +19,7 @@ class TestCleanData(unittest.TestCase):
         print("Test Delete Rows")
         self.assertNotIn('Date', Clean_Data.delete_columns(self.opioid_data, ['Date', 'CaseNumber']))
         self.assertNotIn('Race', Clean_Data.delete_columns(self.opioid_data, ['Sex', 'Residence County', 'Race']))
-        self.assertNotIn('Parent Town', Clean_Data.delete_columns(self.county_data, ['Year Established', 'Parent Town']))
+        self.assertNotIn('Town Name', Clean_Data.delete_columns(self.county_data, ['Year Established', 'Town Name']))
         self.assertIn('Oxycodone', Clean_Data.delete_columns(self.opioid_data, ['Heroin', 'Death State']))
 
     def test_remove_nulls(self):
@@ -36,7 +38,7 @@ class TestCleanData(unittest.TestCase):
         print("Test Create Dictionary")
         dictionary = Clean_Data.create_dictionary(self.county_data['Town Name'], self.county_data['County'])
         self.assertEqual(dictionary['Monroe'], 'Fairfield')
-        self.assertEqual(dictionary['Trumbull', 'Fairfield'])
+        self.assertEqual(dictionary['Trumbull'], 'Fairfield')
 
     def test_get_county_from_city(self):
         print("Test Get County from City")
