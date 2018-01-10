@@ -4,7 +4,7 @@ from __future__ import print_function
 from __future__ import division
 import numpy as np
 import tensorflow as tf
-from sklearn.metrics import classification_report, confusion_matrix
+from sklearn.metrics import classification_report
 from sklearn.preprocessing import StandardScaler
 
 def get_x_features(dataset):
@@ -69,7 +69,6 @@ def k_nearest_neighbors(reader_opioid_dataset, x_features, target_classifiers):
 
 
     print("Accuracy: %s" %(accuracy / len(prediction_outcome)))
-    print(confusion_matrix(y_vals_eval, prediction_outcome))
     print(classification_report(y_vals_eval, prediction_outcome, target_names=target_classifiers))
 
 
